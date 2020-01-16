@@ -114,6 +114,7 @@ void PairingHeap::DecreaseKey(Node*& X, int newVal){
  * In the second pass, links the remaining trees from right-to-left to form a single tree
  */
 Node* PairingHeap::TwoPassMeld(Node* p){
+    //Returns root of the new tree
     if(p==nullptr||p->nextSibling==nullptr)
         return p;
     Node *A, *B, *newNode;
@@ -134,9 +135,9 @@ int PairingHeap::DeleteMin(){
     if(root==nullptr)
         return -1;
     int res=root->value;
-    Node* child=root->child;
-    delete root;
-    root=TwoPassMeld(child);
+    Node* oldRoot=root;
+    root=TwoPassMeld(root->child);
+    delete oldRoot;
     return res;
 }
 
