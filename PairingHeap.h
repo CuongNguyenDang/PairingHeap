@@ -39,6 +39,9 @@ public:
     ~PairingHeap(){
         clean(root);
     }
+    Node* GetRoot(){
+        return this->root;
+    }
     void clean(){
         clean(root);
     }
